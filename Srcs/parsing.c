@@ -15,9 +15,9 @@
 int	error_manager(int ac, t_table *table)
 {
 	if (table->philos_nbr < 1)
-		return (ft_putstr_fd("Error: philo number must be at least 1\n", 2), 1);
+		return (ft_putstr_fd("Error: philo value must be at least 1\n", 2), 1);
 	if (table->die_time < 60 || table->eat_time < 60 || table->sleep_time < 60)
-		return (ft_putstr_fd("Error: time number must be at least 60\n", 2), 1);
+		return (ft_putstr_fd("Error: time value must be at least 60\n", 2), 1);
 	if (ac == 6 && table->must_eat < 1)
 		return (ft_putstr_fd("Error: at least 1 philo need to eat\n", 2), 1);
 	return (0);
@@ -70,7 +70,7 @@ int	parsing(int ac, char **av, t_table *table)
 	else
 		table->must_eat = 0;
 	if (stop)
-		return (ft_putstr_fd("Error: wrong arguments size", 2), 1);
+		return (ft_putstr_fd("Error: wrong arguments values", 2), 1);
 	if (error_manager(ac, &table))
 		return (1);
 	return (0);
