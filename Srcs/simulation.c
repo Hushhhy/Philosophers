@@ -6,7 +6,7 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 18:13:58 by acarpent          #+#    #+#             */
-/*   Updated: 2024/11/08 18:24:34 by acarpent         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:57:10 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,24 @@ int simulation(t_table *table)
         if (pthread_create(&table->philos[i].thread, NULL, &philo_routine,
             &table->philos[i]))
             return (1);
+        i++;
     }
+    if (pthread_create(&table->death_thread, NULL, &death_handle, table))
+        return (1);
+    i = 0;
+    while (i < table->philos_nbr)
+    {
+        if (pthread_join(table->philos[i].thread, NULL))
+            return (1);
+        i++;
+    }
+    if (pthread_join(table->death_thread, NULL))
+        return (1);
+    return (0);
+}
+
+void    wait_philos(size_t start)
+{
+    while (get_time() < start)
+        continue ;
 }

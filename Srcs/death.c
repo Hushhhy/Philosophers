@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time.c                                             :+:      :+:    :+:   */
+/*   death.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 17:49:53 by acarpent          #+#    #+#             */
-/*   Updated: 2024/11/12 17:02:03 by acarpent         ###   ########.fr       */
+/*   Created: 2024/11/12 16:51:10 by acarpent          #+#    #+#             */
+/*   Updated: 2024/11/12 17:04:24 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-size_t	get_time(void)
+int		death(t_table *table)
 {
-	struct timeval	time;
+	int	ret;
 
-	gettimeofday(&time, NULL);
-	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+	ret = 0;
+	pthread_mutex_lock(&table->m_dead);
+	if (table->dead)
+		ret = 1;
+	pthread_mutex_unlock(&table->m_dead);
+	return (ret);
 }
 
-void	ft_usleep(size_t time, t_table *table)
+void	*death_handle(void *arg)
 {
-	size_t	start;
+	t_table	*table;
 
-	start = get_time();
-	while (get_time() - start < time)
+	table = (t_table *)arg;
+	wait_philo(table->start);
+	while (!death_time(table))
 	{
-		if (death(table))
+		if (ending(table))
 			break ;
-		usleep(500);
+		usleep(1000);
 	}
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:58:14 by acarpent          #+#    #+#             */
-/*   Updated: 2024/11/08 18:14:50 by acarpent         ###   ########.fr       */
+/*   Updated: 2024/11/12 17:04:37 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,10 @@ enum
 	FORK = 5
 };
 
+/*---------------------MAIN------------------------*/
+
+int		main(int ac, char **av);
+
 /*----------------PARSING FUNCTIONS----------------*/
 
 int		parsing(int ac, char **av, t_table *table);
@@ -87,9 +91,16 @@ int		ft_isdigit(int c);
 /*-----------------TIME FUNCTIONS------------------*/
 
 size_t	get_time(void);
+void	ft_usleep(size_t time, t_table *table);
 
 /*-------------SIMULATION FUNCTIONS----------------*/
 
+int 	simulation(t_table *table);
+void    philo_routine(void *arg);
 
+/*-------------------ACTIONS-----------------------*/
+
+void	*death_handle(void *arg);
+int		death(t_table *table);
 
 #endif
