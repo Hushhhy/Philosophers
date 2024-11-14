@@ -6,7 +6,7 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:06:13 by acarpent          #+#    #+#             */
-/*   Updated: 2024/11/08 17:40:09 by acarpent         ###   ########.fr       */
+/*   Updated: 2024/11/14 15:26:59 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ long	ft_atol(const char *str, int *stop)
 	nb = 0;
 	sign = 1;
 	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-			|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
+		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
 			i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
@@ -30,9 +30,9 @@ long	ft_atol(const char *str, int *stop)
 			sign = -sign;
 		i++;
 	}
-	while (str[i] >= 0 && str[i] <= 9)
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		nb = nb * 10 + (str[i] -  '0');
+		nb = nb * 10 + (str[i] - '0');
 		i++;
 	}
 	if (nb > INT_MAX && sign == 1)
@@ -47,7 +47,7 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-size_t  ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
@@ -59,6 +59,6 @@ size_t  ft_strlen(const char *s)
 
 void	ft_putstr_fd(char *s, int fd)
 {
-    if (s)
+	if (s)
 		write(fd, s, ft_strlen(s));
 }

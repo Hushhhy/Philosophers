@@ -6,7 +6,7 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:57:12 by acarpent          #+#    #+#             */
-/*   Updated: 2024/11/08 18:12:51 by acarpent         ###   ########.fr       */
+/*   Updated: 2024/11/14 15:27:17 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int	init_table(t_table *table)
 	table->dead = 0;
 	return (0);
 }
+
 int	init_mutex(t_table *table)
 {
 	if (pthread_mutex_init(&table->m_dead, NULL))

@@ -6,12 +6,12 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:58:14 by acarpent          #+#    #+#             */
-/*   Updated: 2024/11/12 17:04:37 by acarpent         ###   ########.fr       */
+/*   Updated: 2024/11/14 15:25:58 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
-#define PHILOSOPHERS_H
+# define PHILOSOPHERS_H
 
 # include <pthread.h>
 # include <string.h>
@@ -63,9 +63,20 @@ enum
 	FORK = 5
 };
 
+# define YELLOW "\033[33m"
+# define RED "\033[0;31m"
+# define GREEN "\033[32m"
+# define RESET "\033[0m"
+# define BLUE "\033[34m"
+# define CYAN "\033[36m"
+
 /*---------------------MAIN------------------------*/
 
 int		main(int ac, char **av);
+
+/*----------------------UTILS----------------------*/
+
+void	print_it(t_philo *philo, int msg);
 
 /*----------------PARSING FUNCTIONS----------------*/
 
@@ -85,22 +96,29 @@ int		init_mutex(t_table *table);
 
 long	ft_atol(const char *str, int *stop);
 void	ft_putstr_fd(char *s, int fd);
-size_t  ft_strlen(const char *s);
+size_t	ft_strlen(const char *s);
 int		ft_isdigit(int c);
 
 /*-----------------TIME FUNCTIONS------------------*/
 
-size_t	get_time(void);
 void	ft_usleep(size_t time, t_table *table);
+size_t	get_time(void);
 
 /*-------------SIMULATION FUNCTIONS----------------*/
 
-int 	simulation(t_table *table);
-void    philo_routine(void *arg);
+int		simulation(t_table *table);
+void	*philo_routine(void *arg);
+void	wait_philos(size_t start);
 
 /*-------------------ACTIONS-----------------------*/
 
+int		death_check(t_philo *philo);
+void	death_set(t_table *table);
+void	thinking(t_philo *philo);
+void	sleeping(t_philo *philo);
 void	*death_handle(void *arg);
+void	eating(t_philo *philo);
+int		ending(t_table *table);
 int		death(t_table *table);
 
 #endif

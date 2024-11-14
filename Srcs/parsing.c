@@ -6,7 +6,7 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:06:02 by acarpent          #+#    #+#             */
-/*   Updated: 2024/11/08 17:55:16 by acarpent         ###   ########.fr       */
+/*   Updated: 2024/11/14 15:09:09 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	parsing(int ac, char **av, t_table *table)
 		table->must_eat = 0;
 	if (stop)
 		return (ft_putstr_fd("Error: wrong arguments size", 2), 1);
-	if (error_manager(ac, &table))
+	if (error_manager(ac, table))
 		return (1);
 	return (0);
 }
