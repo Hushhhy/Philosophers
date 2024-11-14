@@ -6,7 +6,7 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 14:58:14 by acarpent          #+#    #+#             */
-/*   Updated: 2024/11/14 15:25:58 by acarpent         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:38:27 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int		main(int ac, char **av);
 /*----------------------UTILS----------------------*/
 
 void	print_it(t_philo *philo, int msg);
+void	end_clean(t_table *table);
 
 /*----------------PARSING FUNCTIONS----------------*/
 

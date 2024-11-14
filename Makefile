@@ -6,7 +6,7 @@
 #    By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/06 20:27:40 by acarpent          #+#    #+#              #
-#    Updated: 2024/11/14 16:32:41 by acarpent         ###   ########.fr        #
+#    Updated: 2024/11/14 16:41:49 by acarpent         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,8 @@ fclean: clean
 
 #Remake
 
-re: fclean all
+re: 
+	make fclean 
+	make all
 
 .PHONY: all clean fclean re 

@@ -6,7 +6,7 @@
 /*   By: acarpent <acarpent@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:04:36 by acarpent          #+#    #+#             */
-/*   Updated: 2024/11/14 15:26:23 by acarpent         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:35:21 by acarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int	main(int ac, char **av)
 		return (1);
 	if (simulation(&table))
 		return (1);
+	end_clean(&table);
 	return (0);
 }
